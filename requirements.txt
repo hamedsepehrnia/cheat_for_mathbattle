@@ -1,0 +1,11 @@
+# Python GUI Toolkit (usually comes with Python, but may need separate installation on some Linux distributions)
+# For Linux (Ubuntu/Debian): sudo apt-get install python3-tk
+# For Linux (Fedora): sudo dnf install python3-tkinter
+# tkinter is typically included with Python on Windows and macOS
+
+pyautogui>=0.9.54
+pytesseract>=0.3.10
+opencv-python>=4.8.0
+numpy>=1.24.0
+Pillow>=10.0.0
+
