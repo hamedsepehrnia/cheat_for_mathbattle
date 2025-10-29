@@ -373,6 +373,28 @@ class Config:
 - می‌توانید `LOOP_DELAY` را کاهش دهید (اما نه خیلی کم).
 - مطمئن شوید سیستم شما منابع کافی دارد.
 
+### مشکل: خطای X11 Display Connection (لینوکس)
+
+**خطا:**
+```
+Xlib.error.DisplayConnectionError: Can't connect to display ":0": b'Authorization required, but no authorization protocol specified'
+```
+
+**راه‌حل:**
+این مشکل معمولاً در لینوکس هنگام استفاده از `pyautogui` رخ می‌دهد. برای حل آن:
+
+```bash
+xhost +
+```
+
+این دستور دسترسی به X11 display را برای همه کلاینت‌ها باز می‌کند. برای بازگشت به حالت امن‌تر بعد از استفاده:
+
+```bash
+xhost -
+```
+
+**نکته امنیتی:** دستور `xhost +` دسترسی را برای همه باز می‌کند. اگر می‌خواهید فقط کاربر فعلی دسترسی داشته باشد، می‌توانید از `xhost +SI:localuser:$(whoami)` استفاده کنید.
+
 **English:**
 
 ### Issue: Tesseract path not found
@@ -400,6 +422,28 @@ class Config:
 **Solution:**
 - You can reduce `LOOP_DELAY` (but not too much).
 - Make sure your system has adequate resources.
+
+### Issue: X11 Display Connection Error (Linux)
+
+**Error:**
+```
+Xlib.error.DisplayConnectionError: Can't connect to display ":0": b'Authorization required, but no authorization protocol specified'
+```
+
+**Solution:**
+This error usually occurs on Linux when using `pyautogui`. To fix it:
+
+```bash
+xhost +
+```
+
+This command opens X11 display access for all clients. To revert to a more secure state after use:
+
+```bash
+xhost -
+```
+
+**Security Note:** The `xhost +` command opens access for everyone. If you want only the current user to have access, you can use `xhost +SI:localuser:$(whoami)`.
 
 </div>
 
